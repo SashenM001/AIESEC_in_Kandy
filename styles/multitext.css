@@ -10,19 +10,19 @@
 
 @keyframes change{
     0% {
-        content: "Sashen";
+        content: "Volunteer";
         animation:smooth 1s linear;
     }
     33% {
-        content: "Matheesha";
+        content: "Intern";
         animation:smooth 1s linear;
     }
     66%{
-        content: "SASHEN";
+        content: "Volunteer";
         animation:smooth 1s linear;
     }
     100%{
-        content: "Matheesha";
+        content: "Intern";
         animation:smooth 1s linear;
     }
 }

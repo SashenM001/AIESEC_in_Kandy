@@ -4,7 +4,6 @@ import bgimage from "@public/assets/images/landing/nlds2019large-min.png";
 import icon1 from "@public/carbon_location-filled.png";
 import icon2 from "@public/bxs_phone-call.png";
 import icon3 from "@public/ic_sharp-email.png";
-import logo from "@public/aiesecwhite.png";
 
 const ContactFrom = () => {
   return (

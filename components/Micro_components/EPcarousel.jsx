@@ -1,95 +1,113 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image";
-import image1 from "@public/assets/images/testimonials/Prabashi-min.jpg";
-import image2 from "@public/assets/images/testimonials/India1-min.jpg";
-import image3 from "@public/assets/images/testimonials/India2-min.jpg";
-import image4 from "@public/assets/images/testimonials/Prabashi2-min.jpg";
+import image1 from "@public/assets/images/testimonials/EP 1 GT.jpeg";
+import image2 from "@public/assets/images/testimonials/ep 1 gt2.jpeg";
+import image3 from "@public/assets/images/testimonials/ep 2 gt 2.jpeg";
+import image4 from "@public/assets/images/testimonials/ep2 gt .jpeg";
 
-const Carousel = () =>{
+const Carousel = () => {
+    const ep1Images = [image1, image2];
+    const ep2Images = [image3, image4];
     const slides = [
         {
-            id:1,
-            img1:image1,
-            img2:image2,
-            title1: 'Project On The Map - Prabashi Wanigasinghe',
-            title2: 'The Most Remarkable Occasion',
-            content1:"Volunteering in a foreign country taught me self-reliance and boosted my self-confidence. Despite the language barrier with Egyptians, I made an effort to learn some Arabic and successfully navigated the exchange experience",
-            content2:"The highlight of my exchange experience was getting to play sports like cricket and football with locals and my host family and host community. It encapsulated the friendliness and welcome of my trip."
+            id: 1,
+            title: 'Outgoing Global Talent',
+            content: "I’m truly grateful for the wonderful opportunity to undertake an internship at Manipal University, India. This experience means a lot to me, both personally and professionally. "
         },
         {
-            id:2,
-            img1:image3,
-            img2:image4,
-            title1: 'My Eye-Opening Time Spent on Exchange in India',
-            title2: 'Project On The Map - Prabashi Wanigasinghe',
-            content1:"There is both anticipation and apprehension associated with taking part in an exchange programme. My trip to India was motivated by my interest in both making a positive contribution to the SDGs and seeing a new culture.",
-            content2:"Volunteering in a foreign country taught me self-reliance and boosted my self-confidence. Despite the language barrier with Egyptians, I made an effort to learn some Arabic and successfully navigated the exchange experience. "
-        
+            id: 2,
+            title: 'The Most Remarkable Occasion',
+            content: "This internship is not just a step in my academic journey, but one of the best opportunities of my life, helping me grow, learn, and build a strong foundation for my future career. I’m excited to gain new skills, embrace new challenges, and represent my country with pride.Thank you once again for opening this door to a brighter future. AIESEC in Kandy 🇱🇰 🤝 🇮🇳"
         },
+        {
+            id: 3,
+            title: 'Noha Salem',
+            content: "My experience in Sri Lanka has been truly special.It’s my first time traveling abroad, and this country made it unforgettable.Sri Lanka feels safe, warm, and welcoming — the people are genuinely kind and generous.For the first time, I felt deeply connected to a place in a way I had never experienced before,and despite being far from home, I never felt like a stranger here."
+        },
+        {
+            id: 4,
+            title: 'Incoming Global Talent ',
+            content: "Moving between different cities and landscapes felt like a journey within a journey, each place offering its own charm, culture, and traditions.Of course, like any real experience, there were small challenges along the way — but nothing that couldn’t be handled or learned from.Overall, it’s a trip filled with growth, discovery, and beautiful moments I’ll always carry with me."
+        }
 
     ]
 
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [currentEp1, setCurrentEp1] = useState(0);
+    const [currentEp2, setCurrentEp2] = useState(0);
 
-    const nextSlide = () =>{
-        setCurrentSlide((currentSlide + 1) % slides.length);
-    };
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentEp1((prev) => (prev + 1) % ep1Images.length);
+            setCurrentEp2((prev) => (prev + 1) % ep2Images.length);
+        }, 4000);
 
-    const prevSlide = () =>{
-        setCurrentSlide((currentSlide -1 + slides.length) % slides.lenght);
-    };
-
-    useEffect(()=>{
-        const interval =  setInterval(()=>{
-            nextSlide();
-        }, 2000);
-
-        return ()=>{
+        return () => {
             clearInterval(interval);
         };
-    }, [currentSlide]);
+    }, []);
 
-    return(
-        <div className=" w-screen flex justify-center mt-10">
-            <div className=" xl:w-3/4 overflow-hidden w-full mx-10">
-                {slides.map((slide, index)=>(
-                    <div 
-                    key={index}
-                    className={`w-full ${
-                        index === currentSlide ? "block" : "hidden"
-                      } transition-transform duration-300 transform ${
-                        index === currentSlide ? "translate-x-0" : "translate-x-full"
-                      }`}
-                    >
-                        <div className=" grid grid-cols-2 grid-rows-1 grid-flow-row mb-10">
-                            <div className=" relative ">
-                                <div className=" relative z-0 float-right"><Image src={slide.img1} width={300} className=""/></div>
-                                <div className=" absolute float-left xl:float-none w-64 md:pt-8 md:pb-8 px-6 py-6 z-10 bg-white rounded-2xl shadow-aiesec-mid-grey shadow-2xl xl:top-[70px] xl:right-44 top-[50px]">
-                                    <h2 className=" text-global-talent font-semibold text-center">{slide.title1}</h2><br></br>
-                                    <p className=" text-center">{slide.content1}</p>
-                                </div>
-                            </div>
-                            <div className=" relative">
-                            <div className="relative z-0 float-right "><Image src={slide.img2} width={300} className=""/></div>
-                            <div className="absolute float-left xl:float-none w-64 pt-8 pb-8 px-6 py-6 z-10 bg-white rounded-2xl shadow-aiesec-mid-grey shadow-2xl xl:top-[70px] xl:right-44 top-[50px]">
-                                <h2 className=" text-global-volunteer font-semibold text-center">{slide.title2}</h2><br></br>
-                                    <p className=" text-center">{slide.content2}</p>
-                            </div>
-                            </div>
+    return (
+        <div className="w-screen flex justify-center mt-10">
+            <div className="xl:w-3/4 overflow-hidden w-full mx-10">
+                {/* Two Column Layout - EP1 on Left, EP2 on Right */}
+                <div className="grid grid-cols-2 gap-6 md:gap-8">
+                    {/* EP1 Left Side */}
+                    <div className="flex flex-col">
+                        <div className="relative h-80 mb-4">
+                            <Image
+                                src={ep1Images[currentEp1]}
+                                alt="EP 1"
+                                width={300}
+                                className="w-full h-full rounded-lg object-cover"
+                            />
+                        </div>
+                        <div className="bg-white rounded-xl p-4 shadow-lg">
+                            <h2 className="font-semibold text-sm md:text-base text-center">{slides[currentEp1].title}</h2>
+                            <p className="text-xs md:text-sm text-center mt-2">{slides[currentEp1].content}</p>
                         </div>
                     </div>
-                ))}
-                <div className=" absolute bottom-0 left-0 right-0 flex justify-center mt-5">
-                      {slides.map((_, index)=>(
-                        <span
-                        key={index}
-                        onClick={()=> setCurrentSlide(index)}
-                        className={`w-3 h-3 mx-2 cursor-pointer rounded-full ${
-                            index === currentSlide ? "bg-aiesec-blue" : " bg-aiesec-mid-grey"
-                          }`}
-                        >
-                        </span>
-                      ))}
+
+                    {/* EP2 Right Side */}
+                    <div className="flex flex-col">
+                        <div className="relative h-80 mb-4">
+                            <Image
+                                src={ep2Images[currentEp2]}
+                                alt="EP 2"
+                                width={300}
+                                className="w-full h-full rounded-lg object-cover"
+                            />
+                        </div>
+                        <div className="bg-white rounded-xl p-4 shadow-lg">
+                            <h2 className="font-semibold text-sm md:text-base text-center">{slides[currentEp2 + 2]?.title || slides[2].title}</h2>
+                            <p className="text-xs md:text-sm text-center mt-2">{slides[currentEp2 + 2]?.content || slides[2].content}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Indicators */}
+                <div className="flex justify-center mt-6 gap-6">
+                    {/* EP1 Indicators */}
+                    <div className="flex gap-2">
+                        {ep1Images.map((_, index) => (
+                            <span
+                                key={`ep1-${index}`}
+                                onClick={() => setCurrentEp1(index)}
+                                className={`w-3 h-3 cursor-pointer rounded-full transition-colors ${index === currentEp1 ? "bg-aiesec-blue" : "bg-aiesec-mid-grey"
+                                    }`}
+                            />
+                        ))}
+                    </div>
+                    {/* EP2 Indicators */}
+                    <div className="flex gap-2">
+                        {ep2Images.map((_, index) => (
+                            <span
+                                key={`ep2-${index}`}
+                                onClick={() => setCurrentEp2(index)}
+                                className={`w-3 h-3 cursor-pointer rounded-full transition-colors ${index === currentEp2 ? "bg-aiesec-blue" : "bg-aiesec-mid-grey"
+                                    }`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

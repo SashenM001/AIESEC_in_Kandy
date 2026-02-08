@@ -3,8 +3,8 @@ import { Accordion, AccordionItem } from "@nextui-org/react";
 
 export default function App() {
   return (
-    <div>
-      <h2 className=" text-center text-3xl text-aiesec-blue font-semibold pt-24 pb-4">
+    <div className="pb-20">
+      <h2 className=" text-center text-3xl text-aiesec-blue font-semibold pt-12 pb-4">
         Frequently Asked Questions
       </h2>
       <Accordion variant="splitted" className="px-10 sm:px-44">

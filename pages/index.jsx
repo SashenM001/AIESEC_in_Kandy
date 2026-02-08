@@ -2,17 +2,11 @@ import Nav from "@components/Nav";
 import HomeVideo from "@components/homevideo";
 import Counter from "@components/CounterSection";
 import About from "@components/About";
-import LocalChapters from "@components/chapters";
-import Opportunities from "@components/ouropts";
 import EPCarousel from "@components/carousel";
 import Partners from "@components/partners";
-import BlogsSection from "@components/blogsupdates";
-import NewsUpdates from "@components/newsupdates";
 import FnQ from "@components/FnQ";
-import ContactFrom from "@components/form";
 import Footer from "@components/Footer";
-import Head from "next/head";
-import HtmlHead from "@components/partner-portal/HtmlHead";
+import HtmlHead from "@components/HtmlHead";
 import SplashScreen from "@components/SplashScreen";
 
 import {usePathname} from "next/navigation";
@@ -41,15 +35,10 @@ const MainPage = () => {
       <HomeVideo/>
       <Counter/>
       <About/>
-      <LocalChapters/>
       {/* <Home/> */}
-      <Opportunities/>
       <EPCarousel/>
       <Partners/>
-      <BlogsSection/>
-      <NewsUpdates/>
       <FnQ/>
-      <ContactFrom/>
       <Footer/>
       </div>
     )}

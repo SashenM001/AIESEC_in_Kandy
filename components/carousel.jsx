@@ -7,9 +7,9 @@ import logo from "@public/aiesecwhite.png";
 
 function EPCarousel() {
   return (
-    <section className=" relative w-full mt-24">
-      <h2 className=" text-center text-3xl text-aiesec-blue font-semibold pb-10 px-3">
-        What they're talking about AIESEC
+    <section className="relative w-full py-20 px-4 sm:px-6 bg-gray-50">
+      <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 pb-12">
+        Experience Stories
       </h2>
       <div className="lg:block hidden">
         <Carousel />
