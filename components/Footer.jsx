@@ -5,7 +5,7 @@ import logo from "@public/aiesecwhite.png";
 
 const Footer = () => {
   return (
-    <footer className="relative mb-0">
+    <footer id="footer" className="relative mb-0">
       <div className="bg-aiesec-blue text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left Column - Logo and Description */}

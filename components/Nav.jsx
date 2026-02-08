@@ -6,8 +6,8 @@ import KandyLogo from '../public/assets/images/kandy-logo.png'
 import UniLogo from '../public/assets/images/landing/uni-logo.png'
 import '@styles/globals.css';
 import { useState } from 'react';
-import {HiMenuAlt3} from 'react-icons/hi';
-import {AiOutlineClose} from 'react-icons/ai';
+import { HiMenuAlt3 } from 'react-icons/hi';
+import { AiOutlineClose } from 'react-icons/ai';
 
 function Nav() {
 
@@ -24,10 +24,10 @@ function Nav() {
     <nav id='mobile-nav' className='pt-1 flex justify-between items-center h-20 bg-white fixed z-50 w-full shadow-lg px-4'>
       <div id='mobile-nav-logo' className='flex items-center gap-3'>
         <Link href="/#home">
-          <Image src={UniLogo} alt="University Logo" width={65} className='hidden xsm:block'/>
+          <Image src={UniLogo} alt="University Logo" width={65} className='hidden xsm:block' />
         </Link>
         <Link href="/#home">
-          <Image src={AiesecLogo} alt="AIESEC Logo" width={150} className='hidden xsm:block'/>
+          <Image src={AiesecLogo} alt="AIESEC Logo" width={150} className='hidden xsm:block' />
         </Link>
 
         {/* hidden lg:block */}
@@ -40,22 +40,19 @@ function Nav() {
             <Link href="/#home">Home</Link>
           </li>
           <li onClick={toggle}>
-          <Link href="/#about">Who Are We</Link>
+            <Link href="/#about">Who Are We</Link>
           </li>
           <li onClick={toggle}>
             <Link href="/#partners">Partners</Link>
           </li>
           <li onClick={toggle}>
-            <Link href="/#updates">Events</Link>
-          </li>
-          <li onClick={toggle}>
-            <Link href="/#contact">Contact Us</Link>
+            <Link href="/#footer">Contact Us</Link>
           </li>
         </ul>
       </div>
       <div className='flex items-center'>
-          <Image src={KandyLogo} alt="Kandy Logo" width={120} className='hidden xsm:block'/>
-        </div>
+        <Image src={KandyLogo} alt="Kandy Logo" width={120} className='hidden xsm:block' />
+      </div>
     </nav>
   );
 }
