@@ -16,7 +16,7 @@ const Carousel = () => {
         },
         {
             id: 2,
-            title: 'The Most Remarkable Occasion',
+            title: 'Sudarshan Krishnan',
             content: "This internship is not just a step in my academic journey, but one of the best opportunities of my life, helping me grow, learn, and build a strong foundation for my future career. I’m excited to gain new skills, embrace new challenges, and represent my country with pride.Thank you once again for opening this door to a brighter future. AIESEC in Kandy 🇱🇰 🤝 🇮🇳"
         },
         {
