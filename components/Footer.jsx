@@ -18,7 +18,7 @@ const Footer = () => {
               countries and territories, AIESEC is a non-governmental, and
               not-for-profit organization entirely run by youth for youth. AIESEC
               Sri Lanka was established in 1995, as a member chapter of AIESEC
-              International
+              International.
             </p>
           </div>
 
