@@ -796,45 +796,55 @@ export default function AdminNews() {
                                 </div>
                             ) : (
                                 <div className="space-y-3">
-                                    {stories.map((story) => (
-                                        <div
-                                            key={story.id}
-                                            className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden"
-                                        >
-                                            <div className="flex flex-col sm:flex-row">
-                                                {/* Image Thumbnail */}
-                                                {story.imageUrl && (
-                                                    <div className="sm:w-32 h-24 sm:h-auto shrink-0">
-                                                        <img src={story.imageUrl} alt="" className="w-full h-full object-cover" />
-                                                    </div>
-                                                )}
-                                                <div className="flex-1 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                                                    <div className="flex-1 min-w-0">
-                                                        <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-aiesec-green text-white inline-flex items-center gap-1 mb-1.5">
-                                                            <BsChatQuote /> Story
-                                                        </span>
-                                                        <h3 className="text-base sm:text-lg font-bold text-black mb-0.5">{story.title}</h3>
-                                                        <p className="text-sm text-aiesec-blue font-semibold">{story.name}</p>
-                                                        <p className="text-sm text-aiesec-dark-grey line-clamp-1 mt-0.5">{story.content}</p>
-                                                    </div>
-                                                    <div className="flex gap-1 shrink-0">
-                                                        <button
-                                                            onClick={() => handleEditStory(story)}
-                                                            className="flex items-center gap-1.5 text-sm font-semibold text-aiesec-blue px-4 py-2 rounded-xl hover:bg-aiesec-light-grey transition-colors"
-                                                        >
-                                                            <BsPencil /> Edit
-                                                        </button>
-                                                        <button
-                                                            onClick={() => handleDeleteStory(story.id)}
-                                                            className="flex items-center gap-1.5 text-sm font-semibold text-global-volunteer px-4 py-2 rounded-xl hover:bg-aiesec-light-grey transition-colors"
-                                                        >
-                                                            <BsTrash /> Delete
-                                                        </button>
+                                    {stories.map((story, index) => {
+                                        const isLeft = index % 2 === 0;
+                                        const slideNum = isLeft ? Math.floor(index / 2) + 1 : Math.floor(index / 2) + 1;
+                                        const posLabel = isLeft ? `Left 1.${slideNum}` : `Right 2.${slideNum}`;
+                                        return (
+                                            <div
+                                                key={story.id}
+                                                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden"
+                                            >
+                                                <div className="flex flex-col sm:flex-row">
+                                                    {/* Image Thumbnail */}
+                                                    {story.imageUrl && (
+                                                        <div className="sm:w-32 h-24 sm:h-auto shrink-0">
+                                                            <img src={story.imageUrl} alt="" className="w-full h-full object-cover" />
+                                                        </div>
+                                                    )}
+                                                    <div className="flex-1 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                                        <div className="flex-1 min-w-0">
+                                                            <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                                                                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-aiesec-green text-white inline-flex items-center gap-1">
+                                                                    <BsChatQuote /> Story
+                                                                </span>
+                                                                <span className={`text-xs font-bold px-2.5 py-1 rounded-full inline-flex items-center gap-1 ${isLeft ? "bg-aiesec-blue text-white" : "bg-orange-500 text-white"}`}>
+                                                                    📍 {posLabel}
+                                                                </span>
+                                                            </div>
+                                                            <h3 className="text-base sm:text-lg font-bold text-black mb-0.5">{story.title}</h3>
+                                                            <p className="text-sm text-aiesec-blue font-semibold">{story.name}</p>
+                                                            <p className="text-sm text-aiesec-dark-grey line-clamp-1 mt-0.5">{story.content}</p>
+                                                        </div>
+                                                        <div className="flex gap-1 shrink-0">
+                                                            <button
+                                                                onClick={() => handleEditStory(story)}
+                                                                className="flex items-center gap-1.5 text-sm font-semibold text-aiesec-blue px-4 py-2 rounded-xl hover:bg-aiesec-light-grey transition-colors"
+                                                            >
+                                                                <BsPencil /> Edit
+                                                            </button>
+                                                            <button
+                                                                onClick={() => handleDeleteStory(story.id)}
+                                                                className="flex items-center gap-1.5 text-sm font-semibold text-global-volunteer px-4 py-2 rounded-xl hover:bg-aiesec-light-grey transition-colors"
+                                                            >
+                                                                <BsTrash /> Delete
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                             )}
                         </>
