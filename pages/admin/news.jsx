@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from "react";
 import {
     signInWithEmailAndPassword,
-    signInWithPopup,
-    GoogleAuthProvider,
     onAuthStateChanged,
     signOut,
 } from "firebase/auth";
@@ -26,8 +24,7 @@ import {
     BsBoxArrowRight,
     BsCalendarEvent,
     BsNewspaper,
-    BsGoogle,
-    BsEnvelope,
+
     BsShieldLock,
     BsImage,
     BsX,
@@ -51,7 +48,7 @@ const emptyStoryForm = {
     imageUrl: "",
 };
 
-const googleProvider = new GoogleAuthProvider();
+
 
 function formatDate(dateStr) {
     if (!dateStr) return "";
@@ -75,7 +72,6 @@ export default function AdminNews() {
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState("");
     const [loggingIn, setLoggingIn] = useState(false);
-    const [showEmailForm, setShowEmailForm] = useState(false);
 
     // News data state
     const [items, setItems] = useState([]);
@@ -278,20 +274,6 @@ export default function AdminNews() {
         }
     }
 
-    async function handleGoogleLogin() {
-        setLoginError("");
-        setLoggingIn(true);
-        try {
-            await signInWithPopup(auth, googleProvider);
-        } catch (err) {
-            if (err.code !== "auth/popup-closed-by-user") {
-                setLoginError("Google sign-in failed. Please try again.");
-            }
-        } finally {
-            setLoggingIn(false);
-        }
-    }
-
     async function handleLogout() {
         await signOut(auth);
         showToast("Logged out successfully");
@@ -347,71 +329,38 @@ export default function AdminNews() {
                             </p>
                         </div>
 
-                        {/* Google Login Button */}
-                        <button
-                            onClick={handleGoogleLogin}
-                            disabled={loggingIn}
-                            className="w-full flex items-center justify-center gap-3 bg-white border-2 border-aiesec-mid-grey text-black py-3 rounded-xl font-semibold hover:bg-aiesec-light-grey hover:border-aiesec-dark-grey transition-all disabled:opacity-50 mb-4"
-                        >
-                            <BsGoogle className="text-lg" />
-                            Continue with Google
-                        </button>
-
-                        {/* Divider */}
-                        <div className="flex items-center gap-4 my-6">
-                            <div className="flex-1 h-px bg-aiesec-mid-grey"></div>
-                            <span className="text-xs text-aiesec-dark-grey font-semibold uppercase tracking-wider">or</span>
-                            <div className="flex-1 h-px bg-aiesec-mid-grey"></div>
-                        </div>
-
-                        {/* Email Login Toggle or Form */}
-                        {!showEmailForm ? (
+                        {/* Email Login Form */}
+                        <form onSubmit={handleEmailLogin} className="space-y-4">
+                            <div>
+                                <label className="block text-xs font-bold text-aiesec-dark-grey mb-1 uppercase tracking-wider">Email</label>
+                                <input
+                                    type="email"
+                                    required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="w-full px-4 py-3 rounded-xl border-2 border-aiesec-mid-grey focus:border-aiesec-blue focus:outline-none text-black transition-colors text-sm"
+                                    placeholder="admin@aiesec.net"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-bold text-aiesec-dark-grey mb-1 uppercase tracking-wider">Password</label>
+                                <input
+                                    type="password"
+                                    required
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="w-full px-4 py-3 rounded-xl border-2 border-aiesec-mid-grey focus:border-aiesec-blue focus:outline-none text-black transition-colors text-sm"
+                                    placeholder="••••••••"
+                                />
+                            </div>
                             <button
-                                onClick={() => setShowEmailForm(true)}
-                                className="w-full flex items-center justify-center gap-2 bg-aiesec-light-grey text-aiesec-dark-grey py-3 rounded-xl font-semibold hover:bg-aiesec-mid-grey transition-colors text-sm"
+                                type="submit"
+                                disabled={loggingIn}
+                                className="w-full bg-aiesec-blue text-white py-3 rounded-xl font-semibold hover:bg-[#0266cc] transition-colors disabled:opacity-50"
                             >
-                                <BsEnvelope /> Sign in with Email
+                                {loggingIn ? "Signing in..." : "Sign In"}
                             </button>
-                        ) : (
-                            <form onSubmit={handleEmailLogin} className="space-y-4">
-                                <div>
-                                    <label className="block text-xs font-bold text-aiesec-dark-grey mb-1 uppercase tracking-wider">Email</label>
-                                    <input
-                                        type="email"
-                                        required
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl border-2 border-aiesec-mid-grey focus:border-aiesec-blue focus:outline-none text-black transition-colors text-sm"
-                                        placeholder="admin@aiesec.net"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-xs font-bold text-aiesec-dark-grey mb-1 uppercase tracking-wider">Password</label>
-                                    <input
-                                        type="password"
-                                        required
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl border-2 border-aiesec-mid-grey focus:border-aiesec-blue focus:outline-none text-black transition-colors text-sm"
-                                        placeholder="••••••••"
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    disabled={loggingIn}
-                                    className="w-full bg-aiesec-blue text-white py-3 rounded-xl font-semibold hover:bg-[#0266cc] transition-colors disabled:opacity-50"
-                                >
-                                    {loggingIn ? "Signing in..." : "Sign In"}
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => { setShowEmailForm(false); setLoginError(""); }}
-                                    className="w-full text-aiesec-dark-grey text-sm hover:underline"
-                                >
-                                    Back to login options
-                                </button>
-                            </form>
-                        )}
+                        </form>
 
                         {loginError && (
                             <div className="mt-4 bg-[#FEE2E2] text-global-volunteer text-sm text-center py-2 px-4 rounded-xl">
