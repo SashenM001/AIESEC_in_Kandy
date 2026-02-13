@@ -3,7 +3,7 @@ import Link from 'next/link'
 // import AiesecLogo from './Icons/bluelogo.png';
 import AiesecLogo from '../public/assets/images/bluelogo.png'
 import KandyLogo from '../public/assets/images/kandy-logo.png'
-import UniLogo from '../public/assets/images/landing/uni-logo.png'
+
 import '@styles/globals.css';
 import { useState } from 'react';
 import { HiMenuAlt3 } from 'react-icons/hi';
@@ -23,9 +23,7 @@ function Nav() {
   return (
     <nav id='mobile-nav' className='pt-1 flex justify-between items-center h-20 bg-white fixed z-50 w-full shadow-lg px-4'>
       <div id='mobile-nav-logo' className='flex items-center gap-3'>
-        <Link href="/#home">
-          <Image src={UniLogo} alt="University Logo" width={65} className='hidden xsm:block' />
-        </Link>
+
         <Link href="/#home">
           <Image src={AiesecLogo} alt="AIESEC Logo" width={150} className='hidden xsm:block' />
         </Link>
