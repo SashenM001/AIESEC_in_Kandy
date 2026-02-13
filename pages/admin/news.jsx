@@ -601,7 +601,7 @@ export default function AdminNews() {
                                                     <BsImage className="inline mr-1" /> Image URL (optional)
                                                 </label>
                                                 <input
-                                                    type="url"
+                                                    type="text"
                                                     value={form.imageUrl}
                                                     onChange={(e) => setForm({ ...form, imageUrl: e.target.value })}
                                                     className="w-full px-4 py-3 rounded-xl border-2 border-aiesec-mid-grey focus:border-aiesec-blue focus:outline-none text-black transition-colors"
@@ -787,7 +787,7 @@ export default function AdminNews() {
                                                 <BsImage className="inline mr-1" /> Image URL (optional)
                                             </label>
                                             <input
-                                                type="url"
+                                                type="text"
                                                 value={storyForm.imageUrl}
                                                 onChange={(e) => setStoryForm({ ...storyForm, imageUrl: e.target.value })}
                                                 className="w-full px-4 py-3 rounded-xl border-2 border-aiesec-mid-grey focus:border-aiesec-blue focus:outline-none text-black transition-colors"
