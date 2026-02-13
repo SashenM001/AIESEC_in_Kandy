@@ -17,6 +17,7 @@
     "accordian": "^0.0.1",
     "animejs": "^3.2.1",
     "cloudinary-video-player": "^1.9.16",
+    "firebase": "^12.9.0",
     "flowbite": "^1.8.1",
     "flowbite-react": "^0.6.3",
     "framer-motion": "^10.16.4",

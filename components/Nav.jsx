@@ -43,6 +43,9 @@ function Nav() {
             <Link href="/#about">Who Are We</Link>
           </li>
           <li onClick={toggle}>
+            <Link href="/#news-events">News & Events</Link>
+          </li>
+          <li onClick={toggle}>
             <Link href="/#partners">Partners</Link>
           </li>
           <li onClick={toggle}>
